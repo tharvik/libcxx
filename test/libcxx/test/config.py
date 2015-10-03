@@ -632,6 +632,10 @@ class Configuration(object):
                 self.cxx.flags += ['-fsanitize=thread']
                 self.config.available_features.add('tsan')
                 self.config.available_features.add('sanitizer-new-delete')
+            elif san == 'SafeStack':
+                self.cxx.flags += ['-fsanitize=safe-stack']
+                self.config.available_features.add('safestack')
+                self.config.available_features.add('sanitizer-new-delete')
             else:
                 self.lit_config.fatal('unsupported value for '
                                       'use_sanitizer: {0}'.format(san))
